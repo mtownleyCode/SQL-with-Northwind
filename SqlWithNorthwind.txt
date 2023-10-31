@@ -1,0 +1,155 @@
+1.
+select * from customers;
+
+2.
+SELECT DISTINCT Country FROM Customers;
+
+3.
+select * from Customers where
+   CustomerID like 'BL%';
+
+4.
+select top 100 * from Orders;
+
+5.
+SELECT *
+FROM Customers
+WHERE PostalCode = ' 1010' or PostalCode = '3012' or PostalCode = '12209' OR PostalCode = '05023';
+
+6.
+select * from Orders where
+   ShipRegion is Not Null;
+
+7.
+select * from customers 
+   order by country, City;
+
+8.
+insert into Customers 
+   values('TheNe', 'New Company', 'Andy Smith', 'Sales Agent', '123 New Street', 'Seattle', 'WA', '75201', 'USA', '(555)555-7894', Null);
+
+9.
+update orders
+	set ShipRegion = 'EuroZone'
+    where ShipRegion = 'France';
+
+10.
+delete [Order Details] where 
+   quantity = 1;
+
+11.
+select * from Orders where
+OrderID = 10290;
+
+12.
+select Customers.CustomerID, Orders.CustomerID 
+   from Customers
+   join Orders on Customers.customerID = 'commi'
+   order by customers.CompanyName;
+
+13.
+select Employees.FirstName from Employees
+   where Employees.ReportsTo is null;
+
+14.
+select Employees.FirstName from Employees
+   where Employees.ReportsTo = 2;
+
+15.
+CREATE INDEX idx_CustomerId
+   ON Customers (CustomerId);
+
+Extra Challenges
+
+1.
+SELECT 
+   OrderId,
+   AVG(quantity) as average,
+   min(quantity) as min,
+   max(quantity) as max
+FROM [Order Details]
+group by OrderID;
+
+2.
+SELECT AVG(quantity) as average
+FROM [Order Details];
+
+SELECT min(quantity) as minimum
+FROM [Order Details];
+
+SELECT max(quantity) as maximum
+FROM [Order Details];
+
+3.
+select * from customers where
+   city in ('London', 'paris')
+
+4.
+SELECT Customers.CustomerID, Orders.OrderID
+FROM Customers
+INNER JOIN Orders ON Orders.CustomerID = Customers.customerId;
+
+SELECT Customers.*, Orders.OrderID
+FROM Customers
+Left JOIN Orders ON Orders.CustomerID = Customers.customerId;
+
+SELECT Orders.OrderID, Customers.*
+FROM Orders
+right JOIN Customers ON customers.CustomerID = Orders.customerId;
+
+5.
+SELECT DISTINCT City FROM Customers;
+
+6.
+select FirstName from Employees 
+order by FirstName;
+
+7.
+SELECT [Order Details].OrderID, sum(UnitPrice) as total
+FROM [Order Details]
+group by OrderID;
+
+8.
+select * from Employees where
+   HireDate > Convert(datetime, '1994-01-01');
+
+9.
+select Employees.FirstName,
+  Employees.HireDate,
+  datediff(year, employees.HireDate, GetDate()) 
+ from Employees
+
+10.
+select * from products
+order by products.UnitsInStock 
+
+select * from products
+order by products.UnitsInStock desc
+
+11.
+select * from products where
+   UnitsInStock < 6;
+
+12.
+select * from products where
+   discontinued = 1;
+
+13.
+select * from products where
+   ProductName like '%tofu%';
+
+14.
+select max(unitprice) from 
+	Products;
+
+15.
+select * from Employees where
+   HireDate > Convert(datetime, '1993-01-01');
+
+16.
+select * from Employees where
+   titleOfCourtesy in ('Ms.', 'Mrs.');
+
+17.
+select * from employees where
+   HomePhone like '%(206)%';
